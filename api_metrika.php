@@ -58,7 +58,7 @@ if ($_GET["only_value"] && $_GET["only_value"] == "1") {
 	$array_result = array();
 
 	foreach ($res["totals"][0] as $key => $value) {
-		$value = round($value, 1);
+		$value = round($value);
 		$value = str_replace('.' ,',', $value)." %";
 		$array_totals = array("total" => $value);
 		array_push($array_result, $array_totals);
