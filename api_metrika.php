@@ -1,8 +1,8 @@
 <?php
 
 // Токен обновлять раз в год по этому адресу:
-// https://oauth.yandex.ru/authorize?response_type=token&client_id=fc670ac24e9a4af49ff4716e930f8e50
-$token = 'y0_AgAAAAAOCxGcAAuXlwAAAAEBZSEoAABYB_MDW25OGI8T8J4mtuAmj7laiA';
+// https://oauth.yandex.ru/authorize?response_type=token&client_id=xxxxxxxxxx
+$token = 'xxxxxxxxxx';
 
 if ($_GET["id"]) {
 	$params_id = $_GET["id"];
@@ -28,7 +28,7 @@ if ($_GET["date2"]) {
 $params = array(
 	'id'			=> $params_id,
 	'metrics'		=> $params_metrics,
-	'dimensions'	=> "ym:s:UTMSource",
+	'dimensions'		=> "ym:s:UTMSource",
 	'filters'		=> "ym:s:UTMSource=='vk'",
 	// 'period'		=> "month",
 	'date1'			=> $params_date1,
