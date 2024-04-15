@@ -2,7 +2,7 @@
 
 Формула для Google Таблицы
 ```
-=IMPORTDATA("https://test.dobrodigital.ru/yandex-metrika/main.php?id=89654293&goal_id=255199665&date1=2024-04-01&date2=2024-04-30&only_value=1"; ";")
+=IMPORTDATA("https://test.dobrodigital.ru/yandex-metrika/main.php?id=89654293&goal_id=255199665&date1=2024-04-01&date2=2024-04-30&group=day&only_value=1"; ";")
 ```
 ## Параметры запроса:
 > ```id``` - id счетчика
@@ -14,6 +14,8 @@
 > ```date1``` - начальная дата в формате ```yyyy-mm-dd```
 
 > ```date2``` - конечная дата в формате ```yyyy-mm-dd```
+
+> ```group``` - выборка по ```month``` и ```day```
 
 > ```only_value``` - при равном ```1``` отображаются только значения
 
