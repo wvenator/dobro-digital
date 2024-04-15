@@ -7,30 +7,34 @@ $token = 'xxxxxxxxxx';
 if ($_GET["id"]) {
 	$params_id = $_GET["id"];
 } else {
-	$params_id = "89654293";
+	$params_id = "";
 }
-if ($_GET["metrics"]) {
-	$params_metrics = $_GET["metrics"];
+if ($_GET["goal_id"]) {
+	$params_metrics = 'ym:s:goal'.$_GET["goal_id"].'conversionRate';
 } else {
-	$params_metrics = "ym:s:goal255199665conversionRate";
+	$params_metrics = "";
+}
+if ($_GET["source"]) {
+	$params_source = "ym:s:UTMSource=='".$_GET["source"]."'";
+} else {
+	$params_source = "";
 }
 if ($_GET["date1"]) {
 	$params_date1 = $_GET["date1"];
 } else {
-	$params_date1 = "2024-04-01"; // 7daysAgo - неделя, 30daysAgo - месяц, 365daysAgo - год
+	$params_date1 = "";
 }
 if ($_GET["date2"]) {
 	$params_date2 = $_GET["date2"];
 } else {
-	$params_date2 = "2024-04-08"; // today
+	$params_date2 = "";
 }
 
 $params = array(
 	'id'			=> $params_id,
 	'metrics'		=> $params_metrics,
-	'dimensions'		=> "ym:s:UTMSource",
-	'filters'		=> "ym:s:UTMSource=='vk'",
-	// 'period'		=> "month",
+	'dimensions'	=> "ym:s:UTMSource",
+	'filters'		=> $params_source,
 	'date1'			=> $params_date1,
 	'date2'			=> $params_date2,
 	'group'			=> "day"
@@ -59,7 +63,11 @@ if ($_GET["only_value"] && $_GET["only_value"] == "1") {
 
 	foreach ($res["totals"][0] as $key => $value) {
 		$value = round($value);
-		$value = str_replace('.' ,',', $value)." %";
+		if ($value == 0) {
+			$value = "";
+		} else {
+			$value = str_replace('.' ,',', $value)." %";
+		}
 		$array_totals = array("total" => $value);
 		array_push($array_result, $array_totals);
 	}
