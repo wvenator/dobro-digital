@@ -2,12 +2,12 @@
 
 Формула для Google Таблицы
 ```
-=IMPORTDATA("https://test.dobrodigital.ru/yandex-metrika/main.php?id=89654293&metrics=ym:s:goal255199665conversionRate&source=vk&date1=2024-04-01&date2=2024-04-30&only_value=1"; ";")
+=IMPORTDATA("https://test.dobrodigital.ru/yandex-metrika/main.php?id=89654293&goal_id=255199665&date1=2024-04-01&date2=2024-04-30&only_value=1"; ";")
 ```
 ## Параметры запроса:
 > ```id``` - id счетчика
 
-> ```metrics``` - отслеживаемая метрика
+> ```goal_id``` - id отслеживаемой конверсии
 
 > ```source``` - источник
 
