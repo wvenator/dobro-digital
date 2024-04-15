@@ -16,3 +16,5 @@
 > ```date2``` - конечная дата в формате ```yyyy-mm-dd```
 
 > ```only_value``` - при равном ```1``` отображаются только значения
+
+Форма создания запроса: https://test.dobrodigital.ru/yandex-metrika/create.php
