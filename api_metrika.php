@@ -29,6 +29,11 @@ if ($_GET["date2"]) {
 } else {
 	$params_date2 = "";
 }
+if ($_GET["group"]) {
+	$create_group = $_GET["group"];
+} else {
+	$create_group = "day";
+}
 
 $params = array(
 	'id'			=> $params_id,
@@ -37,7 +42,7 @@ $params = array(
 	'filters'		=> $params_source,
 	'date1'			=> $params_date1,
 	'date2'			=> $params_date2,
-	'group'			=> "day"
+	'group'			=> $create_group
 );
 
 $ch = curl_init('https://api-metrika.yandex.net/stat/v1/data/bytime?' . urldecode(http_build_query($params)));
@@ -77,13 +82,13 @@ if ($_GET["only_value"] && $_GET["only_value"] == "1") {
 	$array_result = array(
 		array(
 			"time" => "Дата",
-			"total" => "Конверсия"
+			"total" => "Конверсия, %"
 		)
 	);
 
 	foreach ($res["totals"][0] as $key => $value) {
 		$value = round($value, 1);
-		$value = str_replace('.' ,',', $value);
+		$value = str_replace('.' ,',', $value)." %";
 		$array_totals = array("time" => "", "total" => $value);
 		array_push($array_result, $array_totals);
 	}
